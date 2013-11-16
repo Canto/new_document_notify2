@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">실시간 글 알림 애드온2</title>
+    <description xml:lang="ko">
+        Node.js 와 Socket.io를 이용한 실시간 글 알림 애드온
+    </description>
+    <version>1.0.2</version>
+    <date>2013-11-10</date>
+    <author email_address="canto87@naver.com" link="http://canto.btool.kr">
+        <name xml:lang="ko">Canto</name>
+    </author>
+	<extra_vars>
+	<var name="nitrous">
+		<title xml:lang="ko">Nitrous.io Preview URI</title>
+		<description xml:lang="ko">애드온 설정 전에 Node.js 서버 관련 작업이 필요 합니다.
+		하단 주소의 링크를 참고해서 Node.js 서버를 만들어 주세요.
+		&lt;a href='http://canto.btool.kr/27702' target='_blank' &gt;설치 설명서&lt;/a&gt;
+		Nitrous.io 의 Boxes에 적혀있는 Preview URI를 적어주세요. 포트번호는 3000
+		자체 Node.js 서버 이용자 분들은 자체 서버 URI를 적어주시면 됩니다.
+		</description>
+	</var>
+	</extra_vars>
+</addon>
