@@ -8,7 +8,8 @@
 		Context::addJsFile('./addons/new_document_notify2/js/socket.io.js');
 		Context::loadFile(array("./addons/new_document_notify2/js/new_document_notify.js", 'body', '', -100000), true);
 		
-		Context::addCssFile('./addons/new_document_notify2/css/style.css');
+		if(FileHandler::hasContent('./addons/new_document_notify2/css/custom.css')) Context::addCssFile('./addons/new_document_notify2/css/custom.css');
+		else Context::addCssFile('./addons/new_document_notify2/css/style.css');
 		Context::addBodyHeader('<div id="notify-div"></div>');
 		Context::addHtmlHeader('<script type="text/javascript">var socket = io.connect("'.$addon_info->nitrous.'");</script>');
 		if($_SESSION['notify_type']=='write'){
