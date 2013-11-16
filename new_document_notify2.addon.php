@@ -1,7 +1,7 @@
 <?php
 	/*
 	new_document_notify2.addon.php
-	새글이 등록되어있을 경우를 체크 후 알림
+	notify after check new document
 	*/
 
 	if($called_position == 'before_module_proc' && Context::get('module') != 'admin'){
