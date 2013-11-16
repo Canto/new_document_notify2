@@ -11,7 +11,7 @@
 		if(FileHandler::hasContent('./addons/new_document_notify2/css/custom.css')) Context::addCssFile('./addons/new_document_notify2/css/custom.css');
 		else Context::addCssFile('./addons/new_document_notify2/css/style.css');
 		Context::addBodyHeader('<div id="notify-div"></div>');
-		Context::addHtmlHeader('<script type="text/javascript">var socket = io.connect("'.$addon_info->nitrous.'");</script>');
+		Context::addHtmlHeader('<script type="text/javascript">var socket = io.connect("'.$addon_info->nitrous.'");var delay = "'.$addon_info->delay.'";</script>');
 		if($_SESSION['notify_type']=='write'){
 			$title = $_SESSION['notify_title'];
 			$srl =  $_SESSION['notify_srl'];

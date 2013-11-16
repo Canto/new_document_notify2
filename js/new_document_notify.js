@@ -3,7 +3,7 @@
 socket.on('sendToClient', function(data){
 	// print data (jquery thing)
 	jQuery("#notify-div").append("<div class=\"notify-div-alert notify-div-alert-info new-document-notify\"><span class=\"notify-text\">새글 알림 : <a href=\""+default_url+"/"+data.document_srl+"\">"+data.title+"</a></span><a href=\"#\" class=\"close close-button\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</a></div>");
-	jQuery('.new-document-notify:last-child').fadeIn(1000).delay(10000).fadeOut(3000);
+	jQuery('.new-document-notify:last-child').fadeIn(1000).delay(delay).fadeOut(3000);
 	
 });
 
