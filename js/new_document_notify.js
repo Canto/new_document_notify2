@@ -2,7 +2,11 @@
 
 socket.on('sendToClient', function(data){
 	// print data (jquery thing)
-	jQuery("#notify-div").append("<div class=\"notify-div-alert notify-div-alert-info new-document-notify\"><span class=\"notify-text\">새글 알림 : <a href=\""+default_url+"/"+data.document_srl+"\">"+data.title+"</a></span><a href=\"#\" class=\"close close-button\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</a></div>");
+	if(data.type=='comment'){
+		jQuery("#notify-div").append("<div class=\"notify-div-alert notify-div-alert-info new-document-notify\"><span class=\"notify-text\"><a href=\""+default_url+"/"+data.document_srl+"\">"+data.name+"님이 "+data.title+" 글에 댓글을 남기셨습니다</a></span><a href=\"#\" class=\"close close-button\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</a></div>");
+	}else{
+		jQuery("#notify-div").append("<div class=\"notify-div-alert notify-div-alert-info new-document-notify\"><span class=\"notify-text\">새글 알림 : <a href=\""+default_url+"/"+data.document_srl+"\">"+data.title+"</a></span><a href=\"#\" class=\"close close-button\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</a></div>");
+	}
 	jQuery('.new-document-notify:last-child').fadeIn(1000).delay(delay).fadeOut(3000);
 	
 });

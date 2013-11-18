@@ -2,14 +2,14 @@
 #notify-div a{text-decoration:none;color: #3a87ad;}
 .new-document-notify{display:none;}
 .notify-text{
-	width:230px;
+	width:280px;
 	display:block;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
 .notify-div-alert {
-  width:250px;
+  width:300px;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid transparent;
