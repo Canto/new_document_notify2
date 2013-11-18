@@ -3,6 +3,7 @@
 	new_document_notify2.addon.php
 	notify after check new document
 	*/
+if(!defined('__XE__')) exit();
 
 if($called_position == 'before_module_proc' && Context::get('module') != 'admin'){
 	Context::addJsFile('./addons/new_document_notify2/js/socket.io.js');
