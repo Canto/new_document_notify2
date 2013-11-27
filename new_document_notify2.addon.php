@@ -85,4 +85,3 @@ if($called_position == 'before_module_proc' && Context::get('module') != 'admin'
 
 }
 ?>
-
