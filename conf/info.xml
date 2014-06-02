@@ -4,8 +4,8 @@
 	<description xml:lang="ko">
 		Node.js 와 Socket.io를 이용한 실시간 글 알림 애드온
 	</description>
-	<version>1.0.6</version>
-	<date>2013-11-27</date>
+	<version>1.0.7</version>
+	<date>2014-06-02</date>
 	<author email_address="canto87@naver.com" link="http://canto.btool.kr">
 		<name xml:lang="ko">Canto</name>
 	</author>
