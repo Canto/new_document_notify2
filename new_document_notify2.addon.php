@@ -20,7 +20,6 @@ if($called_position == 'before_module_proc' && Context::get('module') != 'admin'
 
 			}else{
 				if($_SESSION['notify_type']=='write'){
-					debugPrint("2");
 					$title = $_SESSION['notify_title'];
 					$srl =  $_SESSION['notify_srl'];
 					unset($_SESSION['notify_type']);
