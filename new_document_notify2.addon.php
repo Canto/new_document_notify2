@@ -7,13 +7,12 @@ if(!defined('__XE__')) exit();
 
 if($called_position == 'before_module_proc' && Context::get('module') != 'admin' && Context::get('act') != 'getFileList' && Context::get('act')!='procFileUpload'){
 	$delay = str_replace("ms","",$addon_info->delay);
-	Context::addJsFile('./addons/new_document_notify2/js/socket.io.js');
-	Context::loadFile(array("./addons/new_document_notify2/js/new_document_notify.js", 'body', '', -100000), true);
-
+	Context::addHtmlHeader('<script src="https://cdn.socket.io/socket.io-1.0.3.js"></script>');
+	Context::addHtmlFooter('<script src="./addons/new_document_notify2/js/new_document_notify.js"></script>');
 	Context::addCssFile('./addons/new_document_notify2/css/style.css');
 	Context::addBodyHeader('<div id="notify-div"></div>');
-	Context::addHtmlHeader('<script type="text/javascript">var socket = io.connect("'.$addon_info->nitrous.'");var delay = '.$delay.'; </script>');
-	if(in_array($this->mid,explode(",",$addon_info->mid))){
+	Context::addHtmlHeader('<script type="text/javascript">var socket = io("'.$addon_info->nitrous.'");var delay = '.$delay.'; </script>');
+	if(in_array($this->mid,explode(",",$addon_info->module_id))){
 		if(Context::get('act') == "dispBoardWrite" && Context::get('document_srl')){
 			$_SESSION['notify_modify'] = 'modify';
 		}else{
@@ -21,7 +20,7 @@ if($called_position == 'before_module_proc' && Context::get('module') != 'admin'
 
 			}else{
 				if($_SESSION['notify_type']=='write'){
-
+					debugPrint("2");
 					$title = $_SESSION['notify_title'];
 					$srl =  $_SESSION['notify_srl'];
 					unset($_SESSION['notify_type']);
@@ -56,7 +55,7 @@ if($called_position == 'before_module_proc' && Context::get('module') != 'admin'
 			}
 		}
 	}
-}else if($called_position == 'after_module_proc' && in_array($this->mid,explode(",",$addon_info->mid))){
+}else if($called_position == 'after_module_proc' && in_array($this->mid,explode(",",$addon_info->module_id))){
 
 	if(Context::get('act') == 'procBoardInsertDocument'){
 		$document_srl = $this->get('document_srl');
