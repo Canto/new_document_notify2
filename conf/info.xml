@@ -10,6 +10,7 @@
 		<name xml:lang="ko">Canto</name>
 	</author>
 	<extra_vars>
+		<title xml:lang="ko">※1.0.9 관련 업데이트는 node.js 서버쪽에 server.js 파일을 업로드후 재실행 시켜주셔야합니다.</title>
 		<var name="nitrous">
 			<title xml:lang="ko">Nitrous.io Preview URI</title>
 			<description xml:lang="ko">애드온 설정 전에 Node.js 서버 관련 작업이 필요 합니다.
