@@ -4,7 +4,7 @@ io.on('connection', function (socket) {
     //call back trigger to server
     socket.on('sendToServer',function(data){
         //send to client
-        socket.emit('sendToClient',data);
+        io.emit('sendToClient',data);
     });
 
 });
