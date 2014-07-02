@@ -2,15 +2,36 @@
 
 socket.on('sendToClient', function(data){
 	// print data (jquery thing)
+    var nSound = document.getElementById("notify-sound");
+    if(getCookie('mobile')=="false"){
+        if(notifysound=="true") nSound.Play();
+    }else{
+        if(notifysound=="true"){
+            jQuery("#notify-div").append("<audio id=\"notify-sound\" src=\"./addons/new_document_notify2/sound/notify.mp3\" autoplay='autoplay'></audio>");
+            jQuery('#notify-sound').remove();
+        }
+    }
 	if(data.type=='comment'){
 		jQuery("#notify-div").append("<div class=\"notify-div-alert notify-div-alert-info new-document-notify\"><span class=\"notify-text\"><a href=\""+default_url+"/"+data.document_srl+"\">"+data.name+"님이 "+data.title+" 글에 댓글을 남기셨습니다</a></span><a href=\"#\" class=\"close close-button\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</a></div>");
 	}else{
 		jQuery("#notify-div").append("<div class=\"notify-div-alert notify-div-alert-info new-document-notify\"><span class=\"notify-text\">새글 알림 : <a href=\""+default_url+"/"+data.document_srl+"\">"+data.title+"</a></span><a href=\"#\" class=\"close close-button\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</a></div>");
 	}
 	jQuery('.new-document-notify:last-child').fadeIn(1000).delay(delay).fadeOut(3000);
-	
-});
 
+});
+function getCookie(cName) {
+    cName = cName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cName);
+    var cValue = '';
+    if(start != -1){
+        start += cName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cValue = cookieData.substring(start, end);
+    }
+    return decodeURI(cValue);
+}
 +function ($) { "use strict";
 
   // ALERT CLASS DEFINITION
@@ -89,3 +110,4 @@ socket.on('sendToClient', function(data){
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
 }(jQuery);
+

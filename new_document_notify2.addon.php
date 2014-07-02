@@ -7,11 +7,19 @@ if(!defined('__XE__')) exit();
 
 if($called_position == 'before_module_proc' && Context::get('module') != 'admin' && Context::get('act') != 'getFileList' && Context::get('act')!='procFileUpload'){
 	$delay = str_replace("ms","",$addon_info->delay);
+	if(!isset($addon_info->notifysound))$addon_info->notifysound = "false";
 	Context::addHtmlHeader('<script src="https://cdn.socket.io/socket.io-1.0.3.js"></script>');
 	Context::addHtmlFooter('<script src="./addons/new_document_notify2/js/new_document_notify.js"></script>');
 	Context::addCssFile('./addons/new_document_notify2/css/style.css');
-	Context::addBodyHeader('<div id="notify-div"></div>');
-	Context::addHtmlHeader('<script type="text/javascript">var socket = io("'.$addon_info->nitrous.'");var delay = '.$delay.'; </script>');
+	if(Mobile::isFromMobilePhone()){
+		Context::addBodyHeader('<div id="notify-div">
+		</div>');
+	}else{
+		Context::addBodyHeader('<div id="notify-div">
+		<embed id="notify-sound" src="./addons/new_document_notify2/sound/notify.mp3" width="0" height="0" autostart="false">
+		</div>');
+	}
+	Context::addHtmlHeader('<script type="text/javascript">var socket = io("'.$addon_info->nitrous.'");var delay = '.$delay.';var notifysound="'.$addon_info->notifysound.'"; </script>');
 	if(in_array($this->mid,explode(",",$addon_info->module_id))){
 		if(Context::get('act') == "dispBoardWrite" && Context::get('document_srl')){
 			$_SESSION['notify_modify'] = 'modify';
