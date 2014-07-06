@@ -4,9 +4,12 @@ socket.on('sendToClient', function(data){
 	// print data (jquery thing)
     var nSound = document.getElementById("notify-sound");
     if(getCookie('mobile')=="false"){
-        if(notifysound=="true") nSound.Play();
+        if(notifysound=="true" && data.document_srl){
+            jQuery("#notify-div").append("<embed id=\"notify-sound\" src=\"./addons/new_document_notify2/sound/notify.mp3\" width=\"0\" height=\"0\" autostart=\"ture\">");
+            jQuery("#notify-sound").remove();
+        }
     }else{
-        if(notifysound=="true"){
+        if(notifysound=="true" && data.document_srl){
             jQuery("#notify-div").append("<audio id=\"notify-sound\" src=\"./addons/new_document_notify2/sound/notify.mp3\" autoplay='autoplay'></audio>");
             jQuery('#notify-sound').remove();
         }
