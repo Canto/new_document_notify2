@@ -2,11 +2,11 @@
 
 socket.on('sendToClient', function(data){
 	// print data (jquery thing)
-    var nSound = document.getElementById("notify-sound");
+
     if(getCookie('mobile')=="false"){
         if(notifysound=="true" && data.document_srl){
-            jQuery("#notify-div").append("<embed id=\"notify-sound\" src=\"./addons/new_document_notify2/sound/notify.mp3\" width=\"0\" height=\"0\" autostart=\"ture\">");
-            jQuery("#notify-sound").remove();
+            jQuery("#notify-div").append("<embed id=\"notify-sound\" src=\"./addons/new_document_notify2/sound/notify.mp3\" width=\"0\" height=\"0\" autostart>");
+            setTimeout(function(){jQuery("#notify-sound").remove()},2000);
         }
     }else{
         if(notifysound=="true" && data.document_srl){
